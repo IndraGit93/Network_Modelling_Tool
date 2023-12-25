@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package config_package;
+
+service config {
+  rpc process_config (Request) returns (Response);
+}
+
+message Request {
+  string network_config = 1;
+  string traffic_config = 2;
+}
+
+message Response {
+  string html_content = 1;
+}

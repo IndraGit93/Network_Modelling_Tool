@@ -30,14 +30,10 @@ class ConfigStore{
 	vector<Config> configVec;
 
 	public: 
-	ConfigStore(){
-		ifstream file("input.csv");
+	ConfigStore(const std::string& csvData) {
+    	std::istringstream csvStream(csvData);
 
-		if (!file.is_open()) {
-			cerr << "Error opening the file input.csv, config parse failed!" << endl;
-			assert(0);
-		}
-		for (const auto& row : csv::CSVReader(file)) {
+		for (const auto& row : csv::CSVReader(csvStream)) {
 			Config c1;    
 			if (row["LinkId"].is_int()) {
 				c1.linkId= row["LinkId"].get<int>();
@@ -73,9 +69,31 @@ typedef struct config_demand{
 class traffic{
 	vector<config_demand> demand_vector;
 	public:
+	traffic(string load_buff){
+		
+		if (load_buff.empty()) 
+		{
+			cerr << "traffic is empty!" << endl;
+			return;
+		}
+		istringstream csvStream(load_buff);
 
+		for (const auto& row : csv::CSVReader(csvStream))
+		{
+			config_demand cd;    
+			if (row["src"].is_str()) {
+				cd.src= row["src"].get<string>();
+			} 
+			if(row["dest"].is_str()){
+				cd.dest= row["dest"].get<string>();
+			}
+			if(row["demand"].is_int()){
+				cd.demand = row["demand"].get<int>();
+			}
+			demand_vector.push_back(cd);
+		}
+	}
 	vector<config_demand> get_demand_vector();
-	void parse_traffic_load();
 	void print();
 };
 

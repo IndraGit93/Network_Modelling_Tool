@@ -16,7 +16,7 @@ class Graph{
     public:
 
     void addEdge(Config conf_node);
-	auto shortestPath(const string& src);
+	unordered_map<string,string> shortestPath(const string& src);
     void learn_routes();
     void print_all_rt();
     void ospf(string src); 

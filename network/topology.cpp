@@ -8,10 +8,11 @@
 			adjacencyList[conf_node.end].push_back({start, conf_node.weight});
     }
 
-	auto Graph::shortestPath(const string& src) {
+	unordered_map<string,string> Graph::shortestPath(const string& src) {
 			priority_queue<pair<int, string>, vector<pair<int, string>>, greater<pair<int, string>>> pq;
             unordered_map<string,string>parent;
-			for (const auto& pair : adjacencyList) {
+			cout<<"Inside shortesPath"<<endl;
+            for (const auto& pair : adjacencyList) {
 				short_dist_map[pair.first] = INT_MAX;
 			}
 			short_dist_map[src] = 0;
@@ -19,11 +20,12 @@
 			while (!pq.empty()) {
 				string curr_node = pq.top().second;
 				int dist = pq.top().first;
+                cout<<curr_node<<" -> dist:"<<dist<<" adjacent Nodes: ->";
 				pq.pop();
 				for (const auto& x : adjacencyList.at(curr_node)) {
-
 					string adj_node_name = x.first->getName();
                     int wt = x.second;
+                    cout<<adj_node_name<<":"<<wt;
 					int newDist = dist + wt;
 					if (newDist < short_dist_map[adj_node_name]) {
 						short_dist_map[adj_node_name] = newDist;
@@ -31,7 +33,12 @@
                         parent[adj_node_name] = curr_node;
 					}
 				}
+                cout<<endl;
 			}
+            cout<<"Printing parent inside shortestPath\n";
+            for(auto x : parent){
+                cout<<x.first<<" -> "<<x.second<<endl;    
+            }
             return parent;
 	}
 
@@ -59,7 +66,12 @@
             cout<<"Node is not present in map"<<endl;
             return ;   
         }
+        cout<<"calling shortestPath() for src:"<<src_node->getName()<<endl;
         unordered_map<string,string> parent_map = shortestPath(src);
+            cout<<"Printing parent outside shortestPath\n";
+            for(auto x : parent_map){
+                cout<<x.first<<" -> "<<x.second<<endl;    
+            }
         for(auto x : parent_map){
             string parent = x.first;
             string child = x.second;

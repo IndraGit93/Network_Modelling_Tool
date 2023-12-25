@@ -60,6 +60,7 @@
      }
 
      void NodeMap::print(){
+        cout<<"Printing NodeMap"<<endl;
         for(const auto& x : _node_map){
             cout<<"Name: "<<x.first<<" capacity:"<<x.second->getCapacity()<<endl;
         }
