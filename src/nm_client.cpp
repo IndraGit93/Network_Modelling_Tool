@@ -1,92 +1,99 @@
-#include <iostream>
-#include <fstream>
 #include <grpcpp/grpcpp.h>
+#include <fstream>
+#include <iostream>
+#include <string>
 #include "config.grpc.pb.h"
+#include "../config/logger.h"
 
-using grpc::Channel;
-using grpc::ClientContext;
-using grpc::Status;
 using config_package::config;
 using config_package::Request;
 using config_package::Response;
+using grpc::Channel;
+using grpc::ClientContext;
+using grpc::Status;
+
+//using std::shared_ptr,std::string, std::endl, std::unique_ptr, std::cerr;
+using namespace std;
 
 class configClient {
-public:
-    configClient(std::shared_ptr<Channel> channel)
-        : stub_(config::NewStub(channel)) {}
-
-    std::string process_config(const std::string& net_csv , const std::string& traf_csv ) {
+   public:
+    configClient(shared_ptr<Channel> channel) : stub_(config::NewStub(channel)) {}
+    string process_config(const string& net_csv, const string& traf_csv) {
         Request request;
         request.set_network_config(net_csv);
         request.set_traffic_config(traf_csv);
-        Response response;      
+        Response response;
         ClientContext context;
-
         Status status = stub_->process_config(&context, request, &response);
-
         if (status.ok()) {
             return response.html_content();
         } else {
-            std::cerr << "RPC failed: " << status.error_message() << std::endl;
+            cerr << "RPC failed: " << status.error_message() << endl;
+            logger->info("RPC failed: {}", status.error_message());
             return "";
         }
     }
-
-private:
-    std::unique_ptr<config::Stub> stub_;
+    private:
+    unique_ptr<config::Stub> stub_;
 };
 
+void initializeLogger() {
+    logger = spdlog::stdout_color_mt("console");
+    spdlog::set_default_logger(logger);
+    spdlog::set_level(spdlog::level::info);
+}
+shared_ptr<spdlog::logger> logger;
+
 int main() {
-    std::ifstream input_file("network_config.csv");
+
+    initializeLogger();
+    ifstream input_file("network_config.csv");
     if (!input_file.is_open()) {
-        std::cerr << "Error opening file 'network_config.csv'" << std::endl;
+        cerr << "Error opening file 'network_config.csv'" << endl;
+        logger->error("Error opening file 'network_config.csv'");
         return 1;
     }
 
-    std::string net_csv((std::istreambuf_iterator<char>(input_file)),
-                            std::istreambuf_iterator<char>());
-    std::cout << "network_config.csv content:\n" << net_csv << std::endl;
+    string net_csv((istreambuf_iterator<char>(input_file)),
+                        istreambuf_iterator<char>());
+
+    logger->info("network_config.csv content: {}\n", net_csv);
     input_file.close();
 
-    std::ifstream input_file1("traffic_config.csv");
+    ifstream input_file1("traffic_config.csv");
+
     if (!input_file1.is_open()) {
-        std::cerr << "Error opening file 'traffic_config.csv'" << std::endl;
+        cerr << "Error opening file 'traffic_config.csv'" << endl;
+        logger->error("Error opening file 'traffic_config.csv'");
         return 1;
     }
 
-    std::string traf_csv((std::istreambuf_iterator<char>(input_file1)),
-                            std::istreambuf_iterator<char>());
+    string traf_csv((istreambuf_iterator<char>(input_file1)),
+                         istreambuf_iterator<char>());
     input_file1.close();
-    std::cout << "traffice_config.csv content:\n" << traf_csv << std::endl;
 
+    logger->info("raffice_config.csv content:\n", traf_csv);
 
     grpc::ChannelArguments channel_args;
-    auto channel = grpc::CreateCustomChannel("localhost:50051", grpc::InsecureChannelCredentials(), channel_args);
+    auto channel = grpc::CreateCustomChannel("localhost:50051", grpc::InsecureChannelCredentials(),
+                                             channel_args);
     configClient client(channel);
 
-    // Send the CSV content and receive the HTML content
-    std::string html_content = client.process_config(net_csv, traf_csv);
+    string html_content = client.process_config(net_csv, traf_csv);
 
-    // Print or use the HTML content as needed
-    std::cout << "Received HTML content:\n" << html_content << std::endl;
+    logger->info("Received HTML content:\n", html_content);
 
-  // Write HTML content to a file
-    std::ofstream html_file("output.html");
+    ofstream html_file("output.html");
     if (html_file.is_open()) {
         html_file << html_content;
         html_file.close();
-        std::cout << "HTML content written to 'output.html'" << std::endl;
+        logger->error("HTML content written to 'output.html'");
     } else {
-        std::cerr << "Error opening 'output.html' for writing" << std::endl;
-        return 1; // Return an error code
+        cerr << "Error opening 'output.html' for writing" << endl;
+        logger->error("HTML content written to 'output.html'");
+        return 1;
     }
-
-    // Replace "your_browser_command" with the command to launch your preferred browser
-    // For example, "firefox" or "google-chrome"
-
-    // Construct the full command to open the HTML file in the browser
-    std::string fullCommand("google-chrome output.html");
-    // Open the HTML file in the browser using the system call
-    std::system(fullCommand.c_str());
+    string fullCommand("google-chrome output.html");
+    system(fullCommand.c_str());
     return 0;
 }

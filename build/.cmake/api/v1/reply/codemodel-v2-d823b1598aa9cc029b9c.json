@@ -1,0 +1,156 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "config",
+					"jsonFile" : "directory-config-8b7a1d9837f139bfe82c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "config",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "network",
+					"jsonFile" : "directory-network-5de104fc96d9b5a94d96.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "network",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						5
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"name" : "nm_tool",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "clang-format::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-clang-format-ce3870fb450673a83e8c.json",
+					"name" : "clang-format",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "config_lib::@1ea838694151cac89012",
+					"jsonFile" : "target-config_lib-594f36a29363bd77c726.json",
+					"name" : "config_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "hw_grpc_proto::@145eef247bfb46b6828c",
+					"jsonFile" : "target-hw_grpc_proto-b7a48e34c06a72d2f660.json",
+					"name" : "hw_grpc_proto",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "main::@145eef247bfb46b6828c",
+					"jsonFile" : "target-main-43b38a07e2c58cc40717.json",
+					"name" : "main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "network_lib::@39732e8ab9fc593479e7",
+					"jsonFile" : "target-network_lib-5022606b818a60d04aa3.json",
+					"name" : "network_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "nm_client::@145eef247bfb46b6828c",
+					"jsonFile" : "target-nm_client-f478ae7a16b0d3162355.json",
+					"name" : "nm_client",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/james/MY_PROJECTS/Network_Modelling_Tool/build",
+		"source" : "/home/james/MY_PROJECTS/Network_Modelling_Tool"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

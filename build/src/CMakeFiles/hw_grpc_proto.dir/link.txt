@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libhw_grpc_proto.a CMakeFiles/hw_grpc_proto.dir/__/proto/config.grpc.pb.cc.o CMakeFiles/hw_grpc_proto.dir/__/proto/config.pb.cc.o
+/usr/bin/ranlib ../../lib/libhw_grpc_proto.a

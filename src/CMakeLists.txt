@@ -16,7 +16,7 @@ configure_file(display_graph.py ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/display_graph.
 
 
 include(common.cmake)
-
+find_package(spdlog REQUIRED)
 # Output directory for generated files
 set(hw_proto_gen_dir "${CMAKE_BINARY_DIR}/proto")
 
@@ -48,7 +48,6 @@ add_custom_command(
 # Include generated *.pb.h files
 include_directories("${hw_proto_gen_dir}")
 include_directories("${CMAKE_BINARY_DIR}/proto")
-
 message(including ${hw_proto_gen_dir})
 
 # hw_grpc_proto
@@ -72,6 +71,7 @@ foreach(_target
     absl::flags_parse
     config_lib
     network_lib
+    spdlog::spdlog_header_only
     ${_REFLECTION}
     ${_GRPC_GRPCPP}
     ${_PROTOBUF_LIBPROTOBUF}

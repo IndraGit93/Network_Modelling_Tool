@@ -1,10 +1,12 @@
-#include <iostream>
-#include "gtest/gtest.h"
 #include "config_parser.h"
+
+#include <iostream>
+
+#include "gtest/gtest.h"
 
 using namespace std;
 
-struct ConfigTest: public testing::Test{
+struct ConfigTest : public testing::Test {
     ConfigStore* cs;  // Declare pointer to ConfigStore
 
     // Constructor
@@ -18,21 +20,16 @@ struct ConfigTest: public testing::Test{
         delete cs;  // Release the dynamically allocated object
         // Perform teardown actions if needed...
     }
-    void setup(){
-        
-    }
-    void tearDown(){
-     
-    }
+    void setup() {}
+    void tearDown() {}
 };
 
-
-TEST_F(ConfigTest, test_getConfig){
-    vector<Config> conf_vec =  cs->getConfig();
+TEST_F(ConfigTest, test_getConfig) {
+    vector<Config> conf_vec = cs->getConfig();
     ASSERT_EQ(conf_vec.size(), 12);
 };
 
-int main(){
+int main() {
     testing::InitGoogleTest();
     return RUN_ALL_TESTS();
 }
