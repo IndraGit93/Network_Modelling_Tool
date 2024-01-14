@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libconf_lib.a CMakeFiles/conf_lib.dir/conf_parser.cpp.o
+/usr/bin/ranlib ../../lib/libconf_lib.a

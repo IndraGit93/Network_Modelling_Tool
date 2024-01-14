@@ -629,7 +629,7 @@ src/CMakeFiles/nm_client.dir/nm_client.cpp.o: ../src/nm_client.cpp \
   /home/james/.local/include/grpcpp/support/proto_buffer_reader.h \
   /home/james/.local/include/grpcpp/support/proto_buffer_writer.h \
   /home/james/.local/include/grpcpp/support/stub_options.h \
-  ../config/logger.h \
+  ../conf/logger.h \
   /usr/local/include/spdlog/spdlog.h \
   /usr/local/include/spdlog/common.h \
   /usr/local/include/spdlog/details/null_mutex.h \
@@ -796,8 +796,6 @@ src/CMakeFiles/nm_client.dir/nm_client.cpp.o: ../src/nm_client.cpp \
 /usr/local/include/spdlog/fmt/fmt.h:
 
 /usr/local/include/spdlog/details/null_mutex.h:
-
-../config/logger.h:
 
 /home/james/.local/include/grpcpp/support/stub_options.h:
 
@@ -1918,6 +1916,8 @@ proto/config.pb.h:
 /home/james/.local/include/grpcpp/impl/server_builder_option.h:
 
 /usr/local/include/spdlog/common.h:
+
+../conf/logger.h:
 
 /usr/include/c++/11/bits/erase_if.h:
 

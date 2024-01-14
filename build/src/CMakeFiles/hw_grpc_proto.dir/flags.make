@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DCARES_STATICLIB
 
-CXX_INCLUDES = -I/home/james/MY_PROJECTS/Network_Modelling_Tool/build/proto -isystem /home/james/.local/include
+CXX_INCLUDES = -I/home/james/MY_PROJECTS/Network_Modelling_Tool/build/proto -I/conf -I/net -isystem /home/james/.local/include
 
 CXX_FLAGS = -std=gnu++17
 

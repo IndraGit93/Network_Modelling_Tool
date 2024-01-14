@@ -44,9 +44,10 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/james/MY_PROJECTS/Network_Modelling_Tool/build/config/cmake_install.cmake")
-  include("/home/james/MY_PROJECTS/Network_Modelling_Tool/build/network/cmake_install.cmake")
+  include("/home/james/MY_PROJECTS/Network_Modelling_Tool/build/conf/cmake_install.cmake")
+  include("/home/james/MY_PROJECTS/Network_Modelling_Tool/build/net/cmake_install.cmake")
   include("/home/james/MY_PROJECTS/Network_Modelling_Tool/build/src/cmake_install.cmake")
+  include("/home/james/MY_PROJECTS/Network_Modelling_Tool/build/test/cmake_install.cmake")
 
 endif()
 

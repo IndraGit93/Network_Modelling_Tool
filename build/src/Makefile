@@ -85,6 +85,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"gmock\" \"gtest\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/james/MY_PROJECTS/Network_Modelling_Tool/build/CMakeFiles /home/james/MY_PROJECTS/Network_Modelling_Tool/build/src//CMakeFiles/progress.marks
@@ -145,18 +190,18 @@ nm_client/fast:
 .PHONY : nm_client/fast
 
 # Convenience name for target.
-src/CMakeFiles/main.dir/rule:
-	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/main.dir/rule
-.PHONY : src/CMakeFiles/main.dir/rule
+src/CMakeFiles/nm_tool.dir/rule:
+	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/nm_tool.dir/rule
+.PHONY : src/CMakeFiles/nm_tool.dir/rule
 
 # Convenience name for target.
-main: src/CMakeFiles/main.dir/rule
-.PHONY : main
+nm_tool: src/CMakeFiles/nm_tool.dir/rule
+.PHONY : nm_tool
 
 # fast build rule for target.
-main/fast:
-	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
-.PHONY : main/fast
+nm_tool/fast:
+	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/nm_tool.dir/build.make src/CMakeFiles/nm_tool.dir/build
+.PHONY : nm_tool/fast
 
 __/proto/config.grpc.pb.o: __/proto/config.grpc.pb.cc.o
 .PHONY : __/proto/config.grpc.pb.o
@@ -206,30 +251,6 @@ __/proto/config.pb.cc.s:
 	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hw_grpc_proto.dir/build.make src/CMakeFiles/hw_grpc_proto.dir/__/proto/config.pb.cc.s
 .PHONY : __/proto/config.pb.cc.s
 
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
-
 nm_client.o: nm_client.cpp.o
 .PHONY : nm_client.o
 
@@ -254,6 +275,30 @@ nm_client.cpp.s:
 	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/nm_client.dir/build.make src/CMakeFiles/nm_client.dir/nm_client.cpp.s
 .PHONY : nm_client.cpp.s
 
+nm_tool.o: nm_tool.cpp.o
+.PHONY : nm_tool.o
+
+# target to build an object file
+nm_tool.cpp.o:
+	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/nm_tool.dir/build.make src/CMakeFiles/nm_tool.dir/nm_tool.cpp.o
+.PHONY : nm_tool.cpp.o
+
+nm_tool.i: nm_tool.cpp.i
+.PHONY : nm_tool.i
+
+# target to preprocess a source file
+nm_tool.cpp.i:
+	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/nm_tool.dir/build.make src/CMakeFiles/nm_tool.dir/nm_tool.cpp.i
+.PHONY : nm_tool.cpp.i
+
+nm_tool.s: nm_tool.cpp.s
+.PHONY : nm_tool.s
+
+# target to generate assembly for a file
+nm_tool.cpp.s:
+	cd /home/james/MY_PROJECTS/Network_Modelling_Tool/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/nm_tool.dir/build.make src/CMakeFiles/nm_tool.dir/nm_tool.cpp.s
+.PHONY : nm_tool.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -261,22 +306,26 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... hw_grpc_proto"
-	@echo "... main"
 	@echo "... nm_client"
+	@echo "... nm_tool"
 	@echo "... __/proto/config.grpc.pb.o"
 	@echo "... __/proto/config.grpc.pb.i"
 	@echo "... __/proto/config.grpc.pb.s"
 	@echo "... __/proto/config.pb.o"
 	@echo "... __/proto/config.pb.i"
 	@echo "... __/proto/config.pb.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 	@echo "... nm_client.o"
 	@echo "... nm_client.i"
 	@echo "... nm_client.s"
+	@echo "... nm_tool.o"
+	@echo "... nm_tool.i"
+	@echo "... nm_tool.s"
 .PHONY : help
 
 

@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libnet_lib.a CMakeFiles/net_lib.dir/node.cpp.o CMakeFiles/net_lib.dir/topology.cpp.o
+/usr/bin/ranlib ../../lib/libnet_lib.a

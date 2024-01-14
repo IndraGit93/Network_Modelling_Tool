@@ -1,0 +1,315 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "conf",
+					"jsonFile" : "directory-conf-9e845025e624b3741c0c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "conf",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "net",
+					"jsonFile" : "directory-net-80d4081e50edbbbe24f7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "net",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						7,
+						9,
+						10
+					]
+				},
+				{
+					"build" : "test",
+					"childIndexes" : 
+					[
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test-451c0598f41488bb20b9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "test",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "test/lib/googletest",
+					"childIndexes" : 
+					[
+						6
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test.lib.googletest-2169e56b01a564901515.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "test/lib/googletest"
+				},
+				{
+					"build" : "test/lib/googletest/googlemock",
+					"childIndexes" : 
+					[
+						7
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test.lib.googletest.googlemock-13d4edcc100200f57c7e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 2,
+					"source" : "test/lib/googletest/googlemock",
+					"targetIndexes" : 
+					[
+						3,
+						4
+					]
+				},
+				{
+					"build" : "test/lib/googletest/googletest",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test.lib.googletest.googletest-cbfb70d2100a87776280.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 3,
+					"source" : "test/lib/googletest/googletest",
+					"targetIndexes" : 
+					[
+						5,
+						6
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					],
+					"name" : "nm_tool",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						7,
+						8,
+						9,
+						10
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						2
+					],
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "googletest-distribution",
+					"parentIndex" : 0
+				},
+				{
+					"childIndexes" : 
+					[
+						3
+					],
+					"directoryIndexes" : 
+					[
+						6
+					],
+					"name" : "gmock",
+					"parentIndex" : 1,
+					"targetIndexes" : 
+					[
+						3,
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "gtest",
+					"parentIndex" : 2,
+					"targetIndexes" : 
+					[
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 4,
+					"id" : "all_test::@36f028580bb02cc8272a",
+					"jsonFile" : "target-all_test-ba424aab422e785c02c4.json",
+					"name" : "all_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "clang-format::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-clang-format-a06d53a17b9d145ce716.json",
+					"name" : "clang-format",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "conf_lib::@7f9b1f3b1984166a67ac",
+					"jsonFile" : "target-conf_lib-e68e94d3bc3c42a06042.json",
+					"name" : "conf_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "gmock::@d326c8eb0afed721c8fa",
+					"jsonFile" : "target-gmock-5c8605db4257163dd932.json",
+					"name" : "gmock",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "gmock_main::@d326c8eb0afed721c8fa",
+					"jsonFile" : "target-gmock_main-695a4852ea606fe63bc9.json",
+					"name" : "gmock_main",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "gtest::@c72fc6c7adf34f6238a3",
+					"jsonFile" : "target-gtest-87842e980a250922eaf7.json",
+					"name" : "gtest",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "gtest_main::@c72fc6c7adf34f6238a3",
+					"jsonFile" : "target-gtest_main-2fcabbfe7f656ee997a8.json",
+					"name" : "gtest_main",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "hw_grpc_proto::@145eef247bfb46b6828c",
+					"jsonFile" : "target-hw_grpc_proto-44e8a6248297da5cc495.json",
+					"name" : "hw_grpc_proto",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "net_lib::@9c2d6179807f9007d92d",
+					"jsonFile" : "target-net_lib-fc6aaf4f6090711f4bc2.json",
+					"name" : "net_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "nm_client::@145eef247bfb46b6828c",
+					"jsonFile" : "target-nm_client-71263979aa0313048066.json",
+					"name" : "nm_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "nm_tool::@145eef247bfb46b6828c",
+					"jsonFile" : "target-nm_tool-166b0b16d108bf9e2d7a.json",
+					"name" : "nm_tool",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/james/MY_PROJECTS/Network_Modelling_Tool/build",
+		"source" : "/home/james/MY_PROJECTS/Network_Modelling_Tool"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

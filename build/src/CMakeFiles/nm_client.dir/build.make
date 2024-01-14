@@ -95,8 +95,8 @@ nm_client_EXTERNAL_OBJECTS =
 ../bin/nm_client: ../lib/libhw_grpc_proto.a
 ../bin/nm_client: /home/james/.local/lib/libabsl_flags.a
 ../bin/nm_client: /home/james/.local/lib/libabsl_flags_parse.a
-../bin/nm_client: ../lib/libconfig_lib.a
-../bin/nm_client: ../lib/libnetwork_lib.a
+../bin/nm_client: ../lib/libconf_lib.a
+../bin/nm_client: ../lib/libnet_lib.a
 ../bin/nm_client: /home/james/.local/lib/libgrpc++_reflection.a
 ../bin/nm_client: /home/james/.local/lib/libgrpc++.a
 ../bin/nm_client: /home/james/.local/lib/libprotobuf.a

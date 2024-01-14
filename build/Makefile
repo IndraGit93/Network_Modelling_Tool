@@ -85,6 +85,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"gmock\" \"gtest\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/james/MY_PROJECTS/Network_Modelling_Tool/build/CMakeFiles /home/james/MY_PROJECTS/Network_Modelling_Tool/build//CMakeFiles/progress.marks
@@ -130,30 +175,30 @@ clang-format/fast:
 .PHONY : clang-format/fast
 
 #=============================================================================
-# Target rules for targets named config_lib
+# Target rules for targets named conf_lib
 
 # Build rule for target.
-config_lib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 config_lib
-.PHONY : config_lib
+conf_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 conf_lib
+.PHONY : conf_lib
 
 # fast build rule for target.
-config_lib/fast:
-	$(MAKE) $(MAKESILENT) -f config/CMakeFiles/config_lib.dir/build.make config/CMakeFiles/config_lib.dir/build
-.PHONY : config_lib/fast
+conf_lib/fast:
+	$(MAKE) $(MAKESILENT) -f conf/CMakeFiles/conf_lib.dir/build.make conf/CMakeFiles/conf_lib.dir/build
+.PHONY : conf_lib/fast
 
 #=============================================================================
-# Target rules for targets named network_lib
+# Target rules for targets named net_lib
 
 # Build rule for target.
-network_lib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 network_lib
-.PHONY : network_lib
+net_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 net_lib
+.PHONY : net_lib
 
 # fast build rule for target.
-network_lib/fast:
-	$(MAKE) $(MAKESILENT) -f network/CMakeFiles/network_lib.dir/build.make network/CMakeFiles/network_lib.dir/build
-.PHONY : network_lib/fast
+net_lib/fast:
+	$(MAKE) $(MAKESILENT) -f net/CMakeFiles/net_lib.dir/build.make net/CMakeFiles/net_lib.dir/build
+.PHONY : net_lib/fast
 
 #=============================================================================
 # Target rules for targets named hw_grpc_proto
@@ -182,17 +227,82 @@ nm_client/fast:
 .PHONY : nm_client/fast
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named nm_tool
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+nm_tool: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nm_tool
+.PHONY : nm_tool
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
-.PHONY : main/fast
+nm_tool/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/nm_tool.dir/build.make src/CMakeFiles/nm_tool.dir/build
+.PHONY : nm_tool/fast
+
+#=============================================================================
+# Target rules for targets named all_test
+
+# Build rule for target.
+all_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all_test
+.PHONY : all_test
+
+# fast build rule for target.
+all_test/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/all_test.dir/build.make test/CMakeFiles/all_test.dir/build
+.PHONY : all_test/fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f test/lib/googletest/googlemock/CMakeFiles/gmock.dir/build.make test/lib/googletest/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f test/lib/googletest/googletest/CMakeFiles/gtest.dir/build.make test/lib/googletest/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f test/lib/googletest/googletest/CMakeFiles/gtest_main.dir/build.make test/lib/googletest/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
 
 # Help Target
 help:
@@ -201,13 +311,22 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... clang-format"
-	@echo "... config_lib"
+	@echo "... all_test"
+	@echo "... conf_lib"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... hw_grpc_proto"
-	@echo "... main"
-	@echo "... network_lib"
+	@echo "... net_lib"
 	@echo "... nm_client"
+	@echo "... nm_tool"
 .PHONY : help
 
 

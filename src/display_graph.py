@@ -2,7 +2,7 @@ from pyvis.network import Network
 import pandas as pd
 
 
-df = pd.read_csv('input.csv')
+df = pd.read_csv('net_conf.csv')
 threshold_df = pd.read_csv('threshold.csv')
 
 node_utilization_dict = dict(zip(threshold_df['Node'], threshold_df['Utilization']))

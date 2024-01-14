@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include "config.grpc.pb.h"
-#include "../config/logger.h"
+#include "logger.h"
 
 using config_package::config;
 using config_package::Request;
@@ -11,9 +11,8 @@ using config_package::Response;
 using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
-
-//using std::shared_ptr,std::string, std::endl, std::unique_ptr, std::cerr;
 using namespace std;
+
 
 class configClient {
    public:
@@ -47,24 +46,24 @@ shared_ptr<spdlog::logger> logger;
 int main() {
 
     initializeLogger();
-    ifstream input_file("network_config.csv");
+    ifstream input_file("net_conf.csv");
     if (!input_file.is_open()) {
-        cerr << "Error opening file 'network_config.csv'" << endl;
-        logger->error("Error opening file 'network_config.csv'");
+        cerr << "Error opening file 'net_conf.csv'" << endl;
+        logger->error("Error opening file 'net_conf.csv'");
         return 1;
     }
 
     string net_csv((istreambuf_iterator<char>(input_file)),
                         istreambuf_iterator<char>());
 
-    logger->info("network_config.csv content: {}\n", net_csv);
+    logger->info("network config content: {}\n", net_csv);
     input_file.close();
 
-    ifstream input_file1("traffic_config.csv");
+    ifstream input_file1("traffic_conf.csv");
 
     if (!input_file1.is_open()) {
-        cerr << "Error opening file 'traffic_config.csv'" << endl;
-        logger->error("Error opening file 'traffic_config.csv'");
+        cerr << "Error opening file 'traf_conf.csv'" << endl;
+        logger->error("Error opening file 'traf_conf.csv'");
         return 1;
     }
 
@@ -72,7 +71,7 @@ int main() {
                          istreambuf_iterator<char>());
     input_file1.close();
 
-    logger->info("raffice_config.csv content:\n", traf_csv);
+    logger->info("traffic config content:\n", traf_csv);
 
     grpc::ChannelArguments channel_args;
     auto channel = grpc::CreateCustomChannel("localhost:50051", grpc::InsecureChannelCredentials(),

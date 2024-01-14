@@ -1,16 +1,9 @@
 # src/CMakeLists.txt
 
-# Add the executable
-#add_executable(nm_tool main.cpp)
-
-# Link the libraries
-#target_link_libraries(nm_tool PUBLIC config_lib network_lib)
-
-
 # Configure config files to be copied to the build directory
-configure_file(input.csv ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/input.csv COPYONLY)
+configure_file(net_conf.csv ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/net_conf.csv COPYONLY)
 configure_file(threshold.csv ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/threshold.csv COPYONLY)
-configure_file(traffic_load.csv ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/traffic_load.csv COPYONLY)
+configure_file(traffic_conf.csv ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/traffic_conf.csv COPYONLY)
 configure_file(display_graph.py ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/display_graph.py  COPYONLY)
 
 
@@ -48,6 +41,8 @@ add_custom_command(
 # Include generated *.pb.h files
 include_directories("${hw_proto_gen_dir}")
 include_directories("${CMAKE_BINARY_DIR}/proto")
+include_directories("${CMAKE_PROJECT_DIR}/conf")
+include_directories("${CMAKE_PROJECT_DIR}/net")
 message(including ${hw_proto_gen_dir})
 
 # hw_grpc_proto
@@ -63,22 +58,17 @@ target_link_libraries(hw_grpc_proto
 
 # Targets greeter_[async_](client|server)
 foreach(_target
-  nm_client main)
+  nm_client nm_tool)
   add_executable(${_target} "${_target}.cpp")
   target_link_libraries(${_target}
     hw_grpc_proto
     absl::flags
     absl::flags_parse
-    config_lib
-    network_lib
+    conf_lib
+    net_lib
     spdlog::spdlog_header_only
     ${_REFLECTION}
     ${_GRPC_GRPCPP}
     ${_PROTOBUF_LIBPROTOBUF}
     )
-    # #Add the output directory to the PATH
-    # set_target_properties(${_target} PROPERTIES
-    #     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-    #     OUTPUT_NAME_DEBUG nm_tool_debug  # Optional: Rename the debug version if needed
-    # )
 endforeach()

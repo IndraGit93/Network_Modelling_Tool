@@ -561,7 +561,7 @@ src/CMakeFiles/nm_client.dir/nm_client.cpp.o: \
  /home/james/.local/include/grpcpp/support/proto_buffer_reader.h \
  /home/james/.local/include/grpcpp/support/proto_buffer_writer.h \
  /home/james/.local/include/grpcpp/support/stub_options.h \
- /home/james/MY_PROJECTS/Network_Modelling_Tool/src/../config/logger.h \
+ /home/james/MY_PROJECTS/Network_Modelling_Tool/conf/logger.h \
  /usr/local/include/spdlog/spdlog.h /usr/local/include/spdlog/common.h \
  /usr/local/include/spdlog/details/null_mutex.h \
  /usr/local/include/spdlog/tweakme.h /usr/local/include/spdlog/fmt/fmt.h \
