@@ -12,6 +12,29 @@ Visualization: The tool may provide visual representations of the network topolo
 
 Capacity Assessment: By analyzing link utilizations, the tool assists network designers in assessing how close the network is to its capacity limits.
 
+# System Requirements
+Ubuntu Destop OS
+
+Chrome Browser installed.(Optional)
+
+## Tool Used
+Language: C++17
+
+Build Tool: CMake
+
+IPC: gRPC
+
+Gtest: Unit testing
+
+Pyvis library: To visualize network topology
+
+Logging: spdlog
+
+Formatting: clang-format
+
+Editor: VS Code
+
+
 # Usage:
 ## Build and Compile
 Download source code and goto dir Network_Modelling_Tool/
@@ -37,16 +60,21 @@ Network_Modelling_Tool/traffic_conf.csv
 Use above Two files to configure nm_tool.
 
 ## Run
+
+nm_client is the user interface and it will initiate the traffic modelling process by sending request to  nm_tool.
+
+The tool calculates traffic flows and link utilizations based on the input data, generates reports and sends back to nm_client.
+
+Goto dir Network_Modelling_Tool/bin/
+
 ./nm_tool
 
 ./nm_client
 
-nm_client will initiate the traffic modelling process by sending request to  nm_tool.
-The tool calculates traffic flows and link utilizations based on the input data.
-Viewing Results:
+## Viewing Results:
 Graphical reports will be generated in file Output.html.
 
-This will file be automatically opened in chrome-browser of linux desktop. 
+This file will be automatically opened in chrome-browser of linux desktop. 
 
 if not opened, you can open it in any preffered browser.
 
@@ -59,6 +87,7 @@ Yellow node means, node whose utilization is nearing capacity.
 Green node means, node is doing well.
 
 Red links means, path has been exhusted.
+
 
 
 
